@@ -1,7 +1,7 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-URL = "https://www.ecartelera.com/peliculas/indice/o/"
+URL = "https://www.ecartelera.com/peliculas/indice/m/"
 content = requests.get(URL)
 soup = BeautifulSoup(content.text, "html.parser")
 #results=[]
@@ -14,14 +14,19 @@ for item in items:
     URLdetail=item["href"]
     contentDetail=requests.get(URLdetail)
     soupDetail = BeautifulSoup(content.text,"html.parser")
-    itemsDetail= soup.findAll('table', {'class':'datospelicula'})
+    itemsDetail= soupDetail.findAll('tbody')
+    print(soupDetail.prettify())
+    """ 
     for itemDetail in itemsDetail.findAll('tr'):
         detail = {}
         columns=item.findAll('td')
-        detail["Anio"]= columns[0].find('td',{'class':'year'}).find('a').get_text()
-   #     itemDetail["Anio"] = item.find ('td',{'class':'year'}).find('a').get_text()
-        print(detail["Anio"])
- #   time.sleep(3)
+        print(soup.prettify())
+        
+        print (columns[0].find('span',{'class':'year' }))
+          detail["Anio"]= columns[0].find('td',{'class':'year'})
+   #     itemDetail["Anio".] = item.find ('td',{'class':'year'}).find('a').get_text()
+       
+ """#   time.sleep(3)
 
 
 #columns[0].find('span', {'class': 'orange'}).get_text()
