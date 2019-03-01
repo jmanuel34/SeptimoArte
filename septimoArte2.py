@@ -9,8 +9,7 @@ titulos = soup.select(".lfilmb .lfilmbc h4 span")
 informacion = soup.select(".lfilmb .lfilmbc p.info")
 film ={}
 for item in titulos:
-#    print(item.text.replace(" ", "+"))
+    print(item.text.replace(" ", "+"))
     rutaItem = (item.text.replace(" ", "+"))
-    print (rutaItem)
 for item in informacion:
     print(item)
