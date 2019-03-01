@@ -1,14 +1,17 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-URL = "https://www.ecartelera.com/peliculas/indice/m/"
+URL = "https://www.ecartelera.com/cines/56,0,1.html"
+#URL = "https://www.ecartelera.com/peliculas/indice/m/"
 content = requests.get(URL)
 soup = BeautifulSoup(content.text, "html.parser")
 #results=[]
 items = soup.findAll('div',{'class': 'fl-item'})
 for item in items:
-    item["titulo"] = item.find('p', {'class': 'tit'}).find('a').get_text()
-    item["href"] = item.find('a').get('href')
+#    item["titulo"] = item.find('span', {'class': 'tit'}).find('a').get_text()
+item["titulo"] = item.find('span').get('href')
+
+item["href"] = item.find('a').get('href')
     print(item["titulo"])
     print(item["href"])
     URLdetail=item["href"]
