@@ -12,5 +12,5 @@ for item in titulos:
 #    print(item.text.replace(" ", "+"))
     rutaItem = (item.text.replace(" ", "+"))
     print (rutaItem)
-for item in informacion:
-    print(item)
+#for item in informacion:
+#    print(item)
