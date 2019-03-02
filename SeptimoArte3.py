@@ -11,8 +11,6 @@ film = {}
 
 for item in items:
     film["titulo"] = item.find("span").getText()
-    ruta = item.find("span").getText()
-
     film["url"] =  film["titulo"].replace(" ", "+")
     info = str((item.find('p', {"class": "info"})))
     elements = re.findall(pattern, info, re.DOTALL | re.MULTILINE | re.IGNORECASE)
