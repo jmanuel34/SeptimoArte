@@ -21,6 +21,7 @@ def encuentra_link(titulo):
 pattern= 'info">(.*?)<span>|</span>(.*?)<span>|</span>(.*?)<span>|</span>(.*?)</p>'
 
 dominio = "https://www.imdb.com/"
+
 URL = "https://www.ecartelera.com/cines/56,0,1.html"
 soup = obtener_dom(URL)
 items = soup.select(".lfilmbc" )
@@ -38,6 +39,4 @@ for item in items:
     film["clasificacion"]=elements[3][3].replace('\n','').replace('\t','')
     film["valoracion"] = encuentra_link(film["titulo"].replace(" ", "+"))
     print("OK")
-    cartelera.append(film)
-
-pprint(cartelera)
+    pprint(film)
