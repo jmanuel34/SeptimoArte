@@ -26,9 +26,10 @@ URL = "https://www.ecartelera.com/cines/56,0,1.html"
 soup = obtener_dom(URL)
 items = soup.select(".lfilmbc" )
 cartelera = []
-film = {}
+
 
 for item in items:
+    film = {}
     film["titulo"] = item.find("span").getText()
     print("Obteniendo pelicula " + film['titulo']+ "... ", end="")
     info = str((item.find('p', {"class": "info"})))
@@ -39,4 +40,7 @@ for item in items:
     film["clasificacion"]=elements[3][3].replace('\n','').replace('\t','')
     film["valoracion"] = encuentra_link(film["titulo"].replace(" ", "+"))
     print("OK")
-    pprint(film)
+    cartelera.append(film)
+#    pprint(film)
+
+pprint (cartelera)
